@@ -275,9 +275,17 @@ export function buildSite() {
   let first = true;
   let ghostOn = false;
   // Each chapter runs on its own looping clock: it restarts whenever the chapter is entered and then repeats on its own.
-  const T1 = 24; // one bore
-  const T2 = 44; // cage, tremie, pour
-  const T3 = 48; // stack the kentledge, load the pile
+  const T1 = 15; // one bore
+  const T2 = 15; // cage, tremie, pour
+  const T3 = 15; // stack the kentledge, load the pile
+  // chapter 2 keeps its old internal timeline (cage 0-0.4, tremie 0.4-0.78, pour 0.78-0.95); this maps the new 15 s pacing onto it
+  const KN = [[0, 0], [0.04, 0.02], [0.28, 0.4], [0.52, 0.78], [0.86, 0.95], [1, 1]];
+  const remap2 = (u) => {
+    for (let i = 0; i < KN.length - 1; i++) {
+      if (u <= KN[i + 1][0]) return lerp(KN[i][1], KN[i + 1][1], (u - KN[i][0]) / (KN[i + 1][0] - KN[i][0]));
+    }
+    return 1;
+  };
   const clocks = [0, 0, 0];
 
   const tipOf = (u) => {
@@ -290,26 +298,37 @@ export function buildSite() {
   function focusHero(sp) {
     return F(-3, 10.6, 0, 64, lerp(-0.05, 0.05, smooth(0, 0.6, sp)), 0.075, 72, 0.06);
   }
+  // Every chapter opens on the whole machine, zooms in on the work, and pulls back out at the end of its loop.
+  const boreWide = F(R2.x + 4, 10, R2.z, 78, 0.04, 0.06, 52, 0.15);
+  const cageWide = F(20, 10, R4.z, 80, 0.0, 0.06, 52, 0.14);
+  const testWide = F(TP.x + 4, 8, 0, 74, 0.0, 0.1, 56, 0.12);
+
   function focusBore(u) {
+    const zoom = smooth(0.1, 0.3, u) * (1 - smooth(0.74, 0.93, u));
     const down = smooth(0.06, 0.44, u);
     const up = smooth(0.5, 0.74, u);
     const ly = u < 0.5 ? lerp(9, -6.5, down) : lerp(-6.5, 8.5, up);
-    const dist = lerp(41, 33, smooth(0.06, 0.3, u)) + 8 * smooth(0.55, 0.74, u);
-    return F(R2.x - 0.2, ly, R2.z, dist, 0.04, 0.05, 52, 0.17);
+    const close = F(R2.x - 0.2, ly, R2.z, lerp(41, 34, smooth(0.06, 0.3, u)) + 6 * smooth(0.55, 0.74, u), 0.04, 0.05, 52, 0.17);
+    return mixF(boreWide, close, zoom);
   }
   function focusCage(u) {
-    let ly = lerp(9, -4, smooth(0.04, 0.38, u));
-    ly = lerp(ly, 8, smooth(0.4, 0.55, u));
-    ly = lerp(ly, 3, smooth(0.66, 0.78, u));
-    ly = lerp(ly, -4, smooth(0.78, 0.9, u));
-    const dist = lerp(40, 44, smooth(0.7, 0.9, u));
-    return F(17.6, ly, R4.z, dist, 0.0, 0.05, 52, 0.17);
+    const zoom = smooth(0.08, 0.22, u) * (1 - smooth(0.88, 0.98, u));
+    let ly = lerp(9, -4, smooth(0.02, 0.24, u));
+    ly = lerp(ly, 6, smooth(0.28, 0.36, u));
+    ly = lerp(ly, -4, smooth(0.5, 0.62, u));
+    const close = F(17.6, ly, R4.z, 40, 0.0, 0.05, 52, 0.17);
+    return mixF(cageWide, close, zoom);
   }
   function focusTest(u) {
+    const zoom = smooth(0.06, 0.2, u) * (1 - smooth(0.9, 0.99, u));
     const stack = F(TP.x + 4, 6.8, 0, 52, 0.0, 0.1, 60, 0.12);
     const load = F(TP.x - 0.5, -1.2, 0, 29, 0.0, 0.07, 48, 0.17);
-    return mixF(stack, load, smooth(0.36, 0.46, u));
+    const close = mixF(stack, load, smooth(0.38, 0.48, u));
+    return mixF(testWide, close, zoom);
   }
+  // moving to the next machine: pull out to the whole machine, shift across, then the next chapter zooms in
+  const hop = (from, wideFrom, to, wideTo, t) =>
+    mixF(mixF(from, wideFrom, smooth(0, 0.5, t)), mixF(wideTo, to, smooth(0.5, 1, t)), smooth(0.35, 0.65, t));
 
   // ---------- kentledge: how a block travels from the yard to the stack ----------
   const yClear = 12.5;
@@ -374,7 +393,8 @@ export function buildSite() {
       clocks[i] = a > 0.001 ? clocks[i] + dt : 0;
     });
     const u1 = (clocks[0] / T1) % 1;
-    const u2 = (clocks[1] / T2) % 1;
+    const n2 = (clocks[1] / T2) % 1; // chapter 2 clock, 0..1
+    const u2 = remap2(n2);
     const u3 = (clocks[2] / T3) % 1;
     const scripted2 = hasStory && a2 > 0.001; // crane 2 and the pour pile are scripted once the camera is on its way there
 
@@ -596,7 +616,7 @@ export function buildSite() {
 
     // ---------------- load test station ----------------
     const hud = { chapter: sp < 0.5 ? 0 : sp < 1.5 ? 1 : sp < 2.5 ? 2 : 3, u: 0 };
-    const stackP = clamp01(u3 / 0.4);
+    const stackP = clamp01(u3 / 0.42);
     const sIdx = Math.min(BLOCKS - 1, Math.floor(stackP * BLOCKS));
     const f = stackP >= 1 ? 1 : stackP * BLOCKS - sIdx;
     let m = null;
@@ -636,7 +656,7 @@ export function buildSite() {
       aim(s, crane3.hookEye(), ringW, 0.02);
     });
     const placed = stackP >= 1 ? BLOCKS : sIdx + (f > 0.9 ? 1 : 0);
-    const v = clamp01((u3 - 0.4) / 0.52);
+    const v = clamp01((u3 - 0.42) / 0.48);
     const lc = loadCurve(v);
     station.setLoad({ frac: lc.frac, settleMM: lc.settle, time });
     hud.load = lc.frac * DESIGN_MT;
@@ -650,8 +670,8 @@ export function buildSite() {
     if (hasStory) {
       let fc;
       if (sp < 1) fc = mixF(focusHero(sp), focusBore(u1), smooth(0, 1, sp));
-      else if (sp < 2) fc = mixF(focusBore(u1), focusCage(u2), smooth(0, 1, sp - 1));
-      else if (sp < 3) fc = mixF(focusCage(u2), focusTest(u3), smooth(0, 1, sp - 2));
+      else if (sp < 2) fc = hop(focusBore(u1), boreWide, focusCage(n2), cageWide, sp - 1);
+      else if (sp < 3) fc = hop(focusCage(n2), cageWide, focusTest(u3), testWide, sp - 2);
       else fc = focusTest(u3);
       // keep the camera above ground (it pitches down to look into the core)
       fc.el = Math.max(fc.el, Math.asin(clamp01((2.5 - fc.ly) / fc.dist)));
@@ -691,7 +711,7 @@ export function buildSite() {
       bores.rig2.group.visible = ug < 0.2 || activeBore.rig2;
       bores.pour.group.visible = ug < 0.2 || activeBore.pour;
       station.bore.group.visible = ug < 0.2 || op3 > 0.01;
-      hud.u = hud.chapter === 0 ? 0 : hud.chapter === 1 ? u1 : hud.chapter === 2 ? u2 : u3;
+      hud.u = hud.chapter === 0 ? 0 : hud.chapter === 1 ? u1 : hud.chapter === 2 ? n2 : u3;
       const cutFor = (clock, T, a) => {
         const tr = clock % T;
         const up = smooth(T - 0.8, T, tr);

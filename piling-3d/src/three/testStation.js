@@ -6,7 +6,7 @@ import { BORE_D } from './world.js';
 // Static load test (kentledge method), built around a test pile at the local origin.
 // A reaction frame of steel beams stands on timber cribs and is loaded with concrete blocks (the kentledge).
 // A hydraulic jack on the pile head pushes up against the frame; dial gauges on a reference beam read the pile settling.
-export const BLOCKS = 12;
+export const BLOCKS = 8;
 const BX = 5.0; // block size x
 const BY = 1.3;
 const BZ = 1.5;
@@ -241,7 +241,7 @@ export function buildTestStation(M, shaftMat) {
     const layer = Math.floor(i / 4);
     const k = i % 4;
     // yard stack: two blocks side by side, two rows, three high; the crane takes the top layer first
-    return { x: 9.2 + (k % 2) * (BX + 0.3), y: BY / 2 + (2 - layer) * (BY + 0.02), z: 4.2 + (k < 2 ? 0 : 1) * (BZ + 0.3) };
+    return { x: 9.2 + (k % 2) * (BX + 0.3), y: BY / 2 + (1 - layer) * (BY + 0.02), z: 4.2 + (k < 2 ? 0 : 1) * (BZ + 0.3) };
   };
   function setBlock(i, x, y, z) {
     bm.compose(V3(x, y, z), q0, V3(1, 1, 1));
