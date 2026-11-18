@@ -18,29 +18,6 @@
   if (document.readyState === 'complete') hidePre(); else window.addEventListener('load', hidePre);
   setTimeout(() => { if (document.body.classList.contains('is-loading')) hidePre(); }, 6000);
 
-  /* ---------- nav ---------- */
-  const nav = $('#nav'), links = $('#nav-links'), btn = $('#menu-btn');
-  let lastY = 0;
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    nav.classList.toggle('scrolled', y > 40);
-    nav.classList.toggle('hide', y > lastY + 6 && y > 400 && !links.classList.contains('open'));
-    if (y < lastY - 6) nav.classList.remove('hide');
-    lastY = y;
-  }, { passive: true });
-  btn.addEventListener('click', () => {
-    const o = links.classList.toggle('open');
-    btn.setAttribute('aria-expanded', o);
-  });
-  $$('a', links).forEach((a) => a.addEventListener('click', () => { links.classList.remove('open'); btn.setAttribute('aria-expanded', false); }));
-  // highlight current section
-  const navMap = new Map($$('a', links).map((a) => [a.getAttribute('href').slice(1), a]));
-  const secObs = new IntersectionObserver((es) => es.forEach((e) => {
-    const a = navMap.get(e.target.id);
-    if (a && e.isIntersecting) { navMap.forEach((x) => x.classList.remove('on')); a.classList.add('on'); }
-  }), { rootMargin: '-45% 0px -50% 0px' });
-  navMap.forEach((_, id) => { const s = document.getElementById(id); if (s) secObs.observe(s); });
-
   /* ---------- reveal on scroll ---------- */
   const rv = $$('.rv');
   const rvObs = new IntersectionObserver((es) => es.forEach((e) => {

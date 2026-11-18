@@ -12,10 +12,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/story.css">
+    <link rel="stylesheet" href="css/nav.css">
     <script>document.documentElement.classList.add('js');</script>
 </head>
 
-<body>
+<body data-page="home">
 
     <!-- Preloader -->
     <div id="preloader" aria-hidden="true">
@@ -23,88 +25,121 @@
         <div class="pre-bar"><span></span></div>
     </div>
 
-    <!-- Navigation -->
-    <header class="nav" id="nav">
-        <a href="#top" class="brand" aria-label="Hindustan Foundation and Constructions, home">
-            <img src="images/Logo/Logo.jpg" alt="" width="44" height="44">
-            <span>Hindustan Foundation<br>&amp; Constructions</span>
-        </a>
-        <nav class="nav-links" id="nav-links" aria-label="Main">
-            <a href="#what-we-do">What we do</a>
-            <a href="#ongoing">Ongoing</a>
-            <a href="#completed">Completed</a>
-            <a href="#leadership">Leadership</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        <a href="tel:+919448086396" class="btn btn-solid nav-cta">Call 94480 86396</a>
-        <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
-    </header>
+    <!-- Navigation (built by js/chrome.js) -->
+    <header id="site-nav"></header>
+    <script src="js/chrome.js"></script>
 
     <main id="top">
 
-        <!-- ============ HERO ============ -->
-        <section class="hero" id="hero">
-            <div class="hero-media">
-                <img src="images/site/s13.webp" alt="A line of rotary piling rigs and a crawler crane at work on a Bengaluru site" fetchpriority="high" id="hero-img">
+        <!-- ============ HERO + SCROLL STORY ============
+             The 3D site sits behind everything (sticky). Scrolling drives it:
+             hero -> 01 rotary boring -> 02 reinforcement cage + tremie concreting -> 03 static load testing.
+             The 3D comes from piling/embed.js (see js/story.js); the photo underneath is the fallback. -->
+        <section class="story" id="hero">
+            <div class="story-stage" id="story-stage">
+                <div class="story-fallback">
+                    <img src="images/site/s13.webp" alt="A line of rotary piling rigs and a crawler crane at work on a Bengaluru site" fetchpriority="high" id="hero-img">
+                </div>
+                <div class="story-canvas" id="story-canvas" role="img" aria-label="Interactive 3D animation of a piling site: boring, reinforcement cage and concreting, and a static load test. It follows your scroll."></div>
             </div>
-            <div class="hero-inner">
-                <h1 class="hero-title">
-                    <span class="line"><span>We build what</span></span>
-                    <span class="line"><span>holds the city up.</span></span>
-                </h1>
-                <p class="hero-sub">Specialist pile foundation contractors in Bengaluru for over 25 years. We bore the ground that towers, tech parks and an airport now stand on.</p>
-                <div class="hero-actions">
-                    <a href="#ongoing" class="btn btn-solid">See our projects</a>
-                    <a href="#what-we-do" class="btn btn-ghost">What is piling?</a>
+
+            <nav class="pager" id="pager" aria-label="Story pages">
+                <button type="button" data-go="0" class="on"><span>Intro</span><i></i></button>
+                <button type="button" data-go="1"><span>01 Rotary boring</span><i></i></button>
+                <button type="button" data-go="2"><span>02 Cage &amp; concrete</span><i></i></button>
+                <button type="button" data-go="3"><span>03 Load testing</span><i></i></button>
+            </nav>
+
+            <div class="story-steps" id="story-steps">
+                <!-- hero -->
+                <div class="step step-hero" data-step="0">
+                    <div class="hero-inner">
+                        <h1 class="hero-title">
+                            <span class="line"><span>We build what</span></span>
+                            <span class="line"><span>holds the city up.</span></span>
+                        </h1>
+                        <p class="hero-sub">Specialist pile foundation contractors in Bengaluru for over 25 years. We bore the ground that towers, tech parks and an airport now stand on.</p>
+                        <div class="hero-actions">
+                            <a href="#ongoing" class="btn btn-solid">See our projects</a>
+                            <a href="#rotary-boring" class="btn btn-ghost">What is piling?</a>
+                        </div>
+                        <p class="scroll-cue" aria-hidden="true"><span>Scroll to see a pile built</span><i></i></p>
+                    </div>
+                    <dl class="hero-stats" id="hero-stats">
+                        <div><dt>Years of piling</dt><dd><span data-count="25">25</span>+</dd></div>
+                        <div><dt>Piles across 13 showcase projects</dt><dd><span data-count="13000" data-sep="1">13,000</span>+</dd></div>
+                        <div><dt>Rotary piling rigs</dt><dd><span data-count="21">21</span></dd></div>
+                        <div><dt>Machines on our own fleet</dt><dd><span data-count="34">34</span></dd></div>
+                    </dl>
+                </div>
+
+                <div id="what-we-do">
+                    <!-- 01: rotary boring -->
+                    <article class="step step-c" id="rotary-boring" data-step="1">
+                        <div class="panel">
+                            <div class="panel-in">
+                                <p class="kicker"><b>01</b> Rotary boring</p>
+                                <h2 class="h2">Every pile starts with a hole.</h2>
+                                <p class="lead">A pile is a long concrete column cast deep into the ground. It carries the weight of a building down to firm soil or rock, so the structure above never settles, tilts or cracks.</p>
+                                <ol class="beats">
+                                    <li data-from="0" data-to="0.1"><b>1</b><span>The rig sets up on the pile mark.</span></li>
+                                    <li data-from="0.1" data-to="0.5"><b>2</b><span>The rotary head turns the tool down through each layer of ground.</span></li>
+                                    <li data-from="0.5" data-to="1"><b>3</b><span>Every run comes up full. The spoil is spun off and the tool goes back down, until the design depth.</span></li>
+                                </ol>
+                                <ul class="facts">
+                                    <li><b>Up to 1200 mm</b><span>pile diameter</span></li>
+                                    <li><b>21</b><span>rotary rigs of our own</span></li>
+                                </ul>
+                                <p class="tags"><span>Bored cast-in-situ piles</span><span>Shoring piles</span></p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 02: reinforcement cage + tremie concreting -->
+                    <article class="step step-c" id="cage-concrete" data-step="2">
+                        <div class="panel">
+                            <div class="panel-in">
+                                <p class="kicker"><b>02</b> Reinforcement cage and concrete</p>
+                                <h2 class="h2">Steel goes in. Concrete comes up.</h2>
+                                <p class="lead">The steel cage is lowered into the open bore. Then concrete is placed through a tremie pipe that reaches the very bottom, so the pile fills from below and the pipe is drawn up as the concrete rises.</p>
+                                <ol class="beats">
+                                    <li data-from="0" data-to="0.42"><b>1</b><span>A crawler crane lowers the cage, which holds the steel exactly where the design wants it.</span></li>
+                                    <li data-from="0.42" data-to="0.78"><b>2</b><span>The tremie pipe is picked up and lowered to the bottom of the bore.</span></li>
+                                    <li data-from="0.78" data-to="1"><b>3</b><span>Ready-mix concrete runs down the pipe and fills the pile from the bottom up.</span></li>
+                                </ol>
+                                <ul class="facts">
+                                    <li><b>6</b><span>crawler cranes<br>Tata 320, Sany 45T, XMG 45T</span></li>
+                                    <li><b>Bottom up</b><span>placement through a tremie pipe</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 03: static load testing -->
+                    <article class="step step-c" id="load-testing" data-step="3">
+                        <div class="panel">
+                            <div class="panel-in">
+                                <p class="kicker"><b>03</b> Static load testing</p>
+                                <h2 class="h2">Then we prove it.</h2>
+                                <p class="lead">Before a building is loaded onto a pile, we load the pile. A jack pushes against a frame stacked with weights, and gauges read how far the pile head moves at every step. That curve shows the pile will carry its design load.</p>
+                                <ol class="beats">
+                                    <li data-from="0" data-to="0.4"><b>1</b><span>A crane stacks the kentledge, the weights the jack will push against.</span></li>
+                                    <li data-from="0.4" data-to="0.92"><b>2</b><span>The jack loads the pile in steps up to 1.5 times the design load. The gauges read the settlement.</span></li>
+                                    <li data-from="0.92" data-to="1.01"><b>3</b><span>The engineer reads the load-settlement curve.</span></li>
+                                </ol>
+                                <ul class="facts">
+                                    <li><b>750 MT</b><span>kentledge tests</span></li>
+                                    <li><b>900+ MT</b><span>rock-anchor tests</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
-            <dl class="hero-stats" id="hero-stats">
-                <div><dt>Years of piling</dt><dd><span data-count="25">25</span>+</dd></div>
-                <div><dt>Piles across 13 showcase projects</dt><dd><span data-count="13000" data-sep="1">13,000</span>+</dd></div>
-                <div><dt>Rotary piling rigs</dt><dd><span data-count="21">21</span></dd></div>
-                <div><dt>Machines on our own fleet</dt><dd><span data-count="34">34</span></dd></div>
-            </dl>
         </section>
 
-        <!-- ============ SECTION 1: WHAT WE DO ============ -->
-        <section class="sec what" id="what-we-do">
-            <div class="wrap what-grid">
-                <div class="what-head">
-                    <h2 class="h2 rv">Every building stands on something you never see.</h2>
-                </div>
-                <div class="what-body">
-                    <p class="lead rv">A pile is a long concrete column cast deep into the ground. It carries the weight of a building down to firm soil or rock, so the structure above never settles, tilts or cracks.</p>
-                    <p class="lead rv">We bore the hole, lower in the steel cage, fill it with concrete, and then prove it with a load test. That is all we do, and we do it every day.</p>
-
-                    <ul class="services">
-                        <li class="rv">
-                            <h3>Bored cast-in-situ piles</h3>
-                            <p>Rotary-rig boring for towers, villas, tech parks, plants and airport structures.</p>
-                        </li>
-                        <li class="rv">
-                            <h3>Shoring piles</h3>
-                            <p>Piles up to 1200 mm in diameter that hold back the earth around deep basements.</p>
-                        </li>
-                        <li class="rv">
-                            <h3>Static load testing</h3>
-                            <p>Kentledge tests up to 750 MT and rock-anchor tests beyond 900 MT prove the design load.</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Slot for the interactive 3D "how a pile is built" explainer -->
-            <div class="wrap">
-                <div class="slot rv" id="piling-3d-slot" data-slot="piling-3d">
-                    <div class="slot-media"><img src="images/site/s19.webp" alt="" loading="lazy"></div>
-                    <div class="slot-copy">
-                        <h3>See a pile being built, step by step.</h3>
-                        <p>An interactive 3D walk-through of excavation, boring, the reinforcement cage and concreting.</p>
-                        <a class="btn btn-solid" href="piling/">Open the 3D walk-through</a>
-                    </div>
-                </div>
-            </div>
-
+        <!-- ============ OUR FLEET ============ -->
+        <section class="sec what" id="fleet">
             <div class="wrap fleet">
                 <h3 class="h3 rv">Our own fleet. Owned, operated and on site.</h3>
                 <ul class="fleet-grid">
@@ -153,33 +188,6 @@
             <noscript><p class="wrap">Please enable JavaScript to browse our completed projects by client.</p></noscript>
         </section>
 
-        <!-- ============ LEADERSHIP ============ -->
-        <section class="sec leaders" id="leadership">
-            <div class="wrap">
-                <h2 class="h2 rv">The people behind the piles.</h2>
-                <div class="leader-grid">
-                    <article class="leader rv">
-                        <img src="images/team/founder.webp" alt="P.H. Krishna Reddy, Proprietor and Founder" loading="lazy">
-                        <div>
-                            <h3>P.H. Krishna Reddy</h3>
-                            <p class="role">Proprietor &amp; Founder</p>
-                            <p>With over 30 years in foundation and geotechnical construction, he established Hindustan Foundation &amp; Constructions in 1998.</p>
-                            <p>Under his leadership the company has delivered everything from residential buildings to large tech parks, defence infrastructure and complex pile works, including Terminals 1 and 2 at Bangalore International Airport.</p>
-                        </div>
-                    </article>
-                    <article class="leader rv">
-                        <img src="images/team/director.webp" alt="Vishruth Krishna Reddy, Director" loading="lazy">
-                        <div>
-                            <h3>Vishruth Krishna Reddy</h3>
-                            <p class="role">Director, Operations &amp; Project Management</p>
-                            <p>A Construction Management graduate of NYU with hands-on experience across India and the US.</p>
-                            <p>He leads project planning, execution and quality management, bringing global best practice to Indian construction sites.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
         <!-- ============ CONTACT ============ -->
         <section class="sec contact" id="contact">
             <div class="wrap contact-grid">
@@ -224,6 +232,7 @@
 
     <script src="js/data.js"></script>
     <script src="js/script.js"></script>
+    <script type="module" src="js/story.js"></script>
 </body>
 
 </html>

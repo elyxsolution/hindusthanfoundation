@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Story harness (dev only)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root { --ink: #0a0f1c; --orange: #ff6a1a; --f-display: 'Barlow Condensed', sans-serif; --f-body: 'Barlow', sans-serif; --gut: 32px; }
+      html, body { margin: 0; height: 100%; background: #0a0f1c; }
+      #stage { position: fixed; inset: 0; }
+      #bar { position: fixed; z-index: 9; left: 16px; right: 16px; bottom: 8px; display: flex; gap: 12px; align-items: center; color: #fff; font: 14px sans-serif; }
+      #bar input { flex: 1; }
+    </style>
+  </head>
+  <body>
+    <div id="stage"></div>
+    <div id="bar"><span id="lab">p = 0.00</span><input id="rng" type="range" min="0" max="4" step="0.005" value="0" /></div>
+    <script type="module">
+      import { mount } from '/src/embed.jsx';
+      const s = mount(document.getElementById('stage'), { onReady: () => (document.title = 'ready') });
+      window.__story = s;
+      const r = document.getElementById('rng');
+      r.addEventListener('input', () => { s.setProgress(+r.value); document.getElementById('lab').textContent = 'p = ' + (+r.value).toFixed(2); });
+    </script>
+  </body>
+</html>
