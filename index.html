@@ -4,636 +4,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hindustan Foundations and Construction</title>
-    <meta name="description" content="Leading experts in structural foundations, piling, and groundwork engineering.">
-
-    <!-- Critical CSS for Preloader - Inline to prevent FOUC -->
-    <style>
-        /* Preloader Critical Styles - Must load immediately */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0a192f 0%, #0d1f3d 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-
-        #preloader.fade-out {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .preloader-content {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .preloader-text {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 4rem);
-            color: #ffffff;
-            margin-bottom: 15px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            background: linear-gradient(120deg, rgba(255, 255, 255, 0.9) 45%, #64ffda 50%, rgba(255, 255, 255, 0.9) 55%);
-            background-size: 200% auto;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeInUp 1s ease-out, shimmerPreloader 3s linear infinite;
-        }
-
-        .preloader-tagline {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(0.9rem, 2vw, 1.2rem);
-            color: #64ffda;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-            animation: fadeInUp 1s ease-out 0.3s both;
-            font-weight: 300;
-        }
-
-        .preloader-loader {
-            width: 60px;
-            height: 3px;
-            background: rgba(100, 255, 218, 0.2);
-            margin: 0 auto;
-            border-radius: 2px;
-            overflow: hidden;
-            position: relative;
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-
-        .preloader-loader::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: #64ffda;
-            animation: loadingSlide 1.5s ease-in-out infinite;
-            box-shadow: 0 0 10px #64ffda;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes shimmerPreloader {
-            0% {
-                background-position: -200% center;
-            }
-
-            100% {
-                background-position: 200% center;
-            }
-        }
-
-        @keyframes loadingSlide {
-            0% {
-                left: -100%;
-            }
-
-            50% {
-                left: 100%;
-            }
-
-            100% {
-                left: 100%;
-            }
-        }
-
-        /* Hide body content until preloader is ready */
-        body {
-            overflow: hidden;
-        }
-
-        body.loaded {
-            overflow-x: hidden;
-        }
-    </style>
-
-    <link rel="stylesheet" href="css/style.css">
+    <title>Hindustan Foundation &amp; Constructions | Pile Foundation Specialists, Bengaluru</title>
+    <meta name="description" content="Specialist pile foundation contractors in Bengaluru for over 25 years. Bored piles, shoring piles and static load testing for towers, tech parks, airports and infrastructure.">
+    <meta name="theme-color" content="#0a0f1c">
     <link rel="icon" href="images/Logo/Logo.jpg" type="image/jpeg">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
-        rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- AOS CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script>document.documentElement.classList.add('js');</script>
 </head>
 
 <body>
 
     <!-- Preloader -->
-    <div id="preloader">
-        <div class="preloader-content">
-            <h1 class="preloader-text">Building Stronger Foundations</h1>
-            <div class="preloader-tagline">Since 1998</div>
-            <div class="preloader-loader"></div>
-        </div>
-    </div>
-
-    <!-- Project Modal -->
-    <div id="project-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h3 id="modal-title">Project Gallery</h3>
-            <div class="modal-gallery" id="modal-gallery">
-                <!-- Images will be injected here -->
-            </div>
-        </div>
+    <div id="preloader" aria-hidden="true">
+        <img src="images/Logo/Logo.jpg" alt="" class="pre-logo">
+        <div class="pre-bar"><span></span></div>
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">
-                <img src="images/Logo/Logo.jpg" alt="Hindustan Foundations" class="logo-img">
-                <span>Hindustan Foundation <br>and Constructions</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#clients">Clients</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
+    <header class="nav" id="nav">
+        <a href="#top" class="brand" aria-label="Hindustan Foundation and Constructions, home">
+            <img src="images/Logo/Logo.jpg" alt="" width="44" height="44">
+            <span>Hindustan Foundation<br>&amp; Constructions</span>
+        </a>
+        <nav class="nav-links" id="nav-links" aria-label="Main">
+            <a href="#what-we-do">What we do</a>
+            <a href="#ongoing">Ongoing</a>
+            <a href="#completed">Completed</a>
+            <a href="#leadership">Leadership</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <a href="tel:+919448086396" class="btn btn-solid nav-cta">Call 94480 86396</a>
+        <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
+    </header>
+
+    <main id="top">
+
+        <!-- ============ HERO ============ -->
+        <section class="hero" id="hero">
+            <div class="hero-media">
+                <img src="images/site/s13.webp" alt="A line of rotary piling rigs and a crawler crane at work on a Bengaluru site" fetchpriority="high" id="hero-img">
             </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="shimmer-text" data-aos="fade-up" data-aos-duration="1000">Building Stronger <span
-                    class="highlight">Foundations</span>
-            </h1>
-            <p data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" class="text-editorial">Experts in
-                Structural Foundations &
-                Building Base Engineering</p>
-            <a href="#projects" class="btn btn-primary" data-aos="fade-up" data-aos-delay="400"
-                data-aos-duration="1000">View Projects</a>
-        </div>
-        <div class="custom-shape-divider-bottom-1681234567 hero-divider">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-                preserveAspectRatio="none">
-                <path
-                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                    class="shape-fill"></path>
-            </svg>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section about">
-        <div class="container">
-            <div class="section-header center" data-aos="fade-up">
-                <h2 class="section-title">Who We Are</h2>
-                <div class="line"></div>
-                <p class="section-subtitle">We are not just builders; we are the bedrock of modern infrastructure.</p>
-            </div>
-
-            <div class="about-grid">
-                <div class="about-text" data-aos="fade-right">
-                    <h3>Engineering Excellence Since Inception</h3>
-                    <p>Hindustan Foundations and Construction specializes in critical groundwork engineering. Unlike
-                        general contractors, we focus purely on what lies beneath — ensuring that every structure has a
-                        safe, stable, and scientific base.</p>
-                    <p>Our team of geotechnical engineers and planners use state-of-the-art piling technologies to
-                        tackle the most challenging terrains.</p>
+            <div class="hero-inner">
+                <h1 class="hero-title">
+                    <span class="line"><span>We build what</span></span>
+                    <span class="line"><span>holds the city up.</span></span>
+                </h1>
+                <p class="hero-sub">Specialist pile foundation contractors in Bengaluru for over 25 years. We bore the ground that towers, tech parks and an airport now stand on.</p>
+                <div class="hero-actions">
+                    <a href="#ongoing" class="btn btn-solid">See our projects</a>
+                    <a href="#what-we-do" class="btn btn-ghost">What is piling?</a>
                 </div>
-                <!-- Service Pillars -->
-                <div class="service-cards">
-                    <div class="card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-aos="rotate-reveal"
-                        data-aos-delay="100">
-                        <i class="fas fa-layer-group icon"></i>
-                        <h4>Deep Piling</h4>
-                        <p>Advanced pile foundation techniques for high-rise stability.</p>
-                    </div>
-                    <div class="card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-aos="rotate-reveal"
-                        data-aos-delay="200">
-                        <i class="fas fa-dungeon icon"></i>
-                        <h4>Base Construction</h4>
-                        <p>Robust structural base work ensuring load-bearing capacity.</p>
-                    </div>
-                    <div class="card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-aos="rotate-reveal"
-                        data-aos-delay="300">
-                        <i class="fas fa-mountain icon"></i>
-                        <h4>Ground Stabilization</h4>
-                        <p>Soil strengthening and groundwork engineering solutions.</p>
-                    </div>
-                    <div class="card gallery-trigger" data-tilt data-tilt-max="10" data-tilt-speed="400"
-                        data-aos="rotate-reveal" data-aos-delay="400"
-                        data-images='["images/Photos/016D29F8-6FFC-4F9C-BAD1-1B4F935C143F.JPG", "images/Photos/0E97D60F-813A-4916-9942-1BCBB618ED5F.JPG", "images/Photos/27218E83-16FF-4E10-9D63-62186702CE99.JPG", "images/Photos/31AE8BCD-5761-48CD-8998-44500B5E4EC7.JPG", "images/Photos/3D2DF968-2003-4539-A412-B44E937AD73C.JPG", "images/Photos/5A4653C4-D9BC-430C-8C9D-E6329C5792AF.JPG", "images/Photos/68DF5FF1-FE19-41D9-926D-E9747CE71A9E.JPG", "images/Photos/773979DD-12FC-4CBE-81B2-AF8C91C1B028.JPG", "images/Photos/7A85EAF1-3566-420B-B5FF-2A9B66BC47A8.JPG", "images/Photos/7CEE1B1B-AB07-4A6C-88CF-CE37B708FD50.JPG", "images/Photos/9B265D2B-8BE8-4781-AC79-53AF907010EF.JPG", "images/Photos/9F63097A-258E-4F2F-93D0-90A8C9900495.JPG", "images/Photos/B6A69EEC-DEC1-46B2-AA91-623D47185F05.JPG", "images/Photos/C52AAB2A-D796-464C-9C87-A35442CCFEF2.JPG", "images/Photos/C791A9A8-A148-411B-964C-F90A8164584D.JPG", "images/Photos/CBB36F5F-4D05-45CA-9662-EB4FD9FD6385.JPG", "images/Photos/CBB7A3C8-B664-4089-A246-A0288932E7ED.JPG", "images/Photos/DA3A4ABE-66CA-4B49-B3F1-17A14EAC7B6C.JPG", "images/Photos/DB0F30DA-05AC-4A49-AA04-C8B9E5CF8AE7.poster.JPG", "images/Photos/F478B99D-815C-48D4-B73E-8C3E77A8D885.JPG", "images/Photos/F7B77284-6E43-4D06-A07B-B3F37B6B5098.JPG"]'>
-                        <i class="fas fa-images icon"></i>
-                        <h4>Site Gallery</h4>
-                        <p>Glimpses of our ongoing and completed site works.</p>
+            </div>
+            <dl class="hero-stats" id="hero-stats">
+                <div><dt>Years of piling</dt><dd><span data-count="25">25</span>+</dd></div>
+                <div><dt>Piles across 13 showcase projects</dt><dd><span data-count="13000" data-sep="1">13,000</span>+</dd></div>
+                <div><dt>Rotary piling rigs</dt><dd><span data-count="21">21</span></dd></div>
+                <div><dt>Machines on our own fleet</dt><dd><span data-count="34">34</span></dd></div>
+            </dl>
+        </section>
+
+        <!-- ============ SECTION 1: WHAT WE DO ============ -->
+        <section class="sec what" id="what-we-do">
+            <div class="wrap what-grid">
+                <div class="what-head">
+                    <h2 class="h2 rv">Every building stands on something you never see.</h2>
+                </div>
+                <div class="what-body">
+                    <p class="lead rv">A pile is a long concrete column cast deep into the ground. It carries the weight of a building down to firm soil or rock, so the structure above never settles, tilts or cracks.</p>
+                    <p class="lead rv">We bore the hole, lower in the steel cage, fill it with concrete, and then prove it with a load test. That is all we do, and we do it every day.</p>
+
+                    <ul class="services">
+                        <li class="rv">
+                            <h3>Bored cast-in-situ piles</h3>
+                            <p>Rotary-rig boring for towers, villas, tech parks, plants and airport structures.</p>
+                        </li>
+                        <li class="rv">
+                            <h3>Shoring piles</h3>
+                            <p>Piles up to 1200 mm in diameter that hold back the earth around deep basements.</p>
+                        </li>
+                        <li class="rv">
+                            <h3>Static load testing</h3>
+                            <p>Kentledge tests up to 750 MT and rock-anchor tests beyond 900 MT prove the design load.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slot for the interactive 3D "how a pile is built" explainer -->
+            <div class="wrap">
+                <div class="slot rv" id="piling-3d-slot" data-slot="piling-3d">
+                    <div class="slot-media"><img src="images/site/s19.webp" alt="" loading="lazy"></div>
+                    <div class="slot-copy">
+                        <h3>See a pile being built, step by step.</h3>
+                        <p>An interactive 3D walk-through of excavation, boring, the reinforcement cage and concreting.</p>
+                        <a class="btn btn-solid" href="piling/">Open the 3D walk-through</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Leadership Section -->
-            <div class="leadership-section mt-5">
-                <h3 class="subsection-title" data-aos="fade-right">Our Leadership</h3>
-                <div class="leadership-grid">
-                    <!-- PH Krishna Reddy -->
-                    <div class="leader-card" data-aos="fade-up">
-                        <div class="leader-img-container">
-                            <img src="images/people/img1.JPG" alt="PH Krishna Reddy">
+            <div class="wrap fleet">
+                <h3 class="h3 rv">Our own fleet. Owned, operated and on site.</h3>
+                <ul class="fleet-grid">
+                    <li class="rv"><b>12</b><span>Hydraulic rotary rigs<small>MAIT HR180 &amp; HR130, SANY</small></span></li>
+                    <li class="rv"><b>6</b><span>Tractor-mounted rotary rigs</span></li>
+                    <li class="rv"><b>3</b><span>Truck-mounted rotary rigs</span></li>
+                    <li class="rv"><b>6</b><span>Crawler cranes<small>Tata 320, Sany 45T, XMG 45T</small></span></li>
+                    <li class="rv"><b>2</b><span>Mobile cranes<small>Farana F15</small></span></li>
+                    <li class="rv"><b>5</b><span>Excavators</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 2: ONGOING ============ -->
+        <section class="sec ongoing" id="ongoing">
+            <div class="wrap sec-head">
+                <h2 class="h2 rv">On site right now.</h2>
+                <p class="lead rv">Five live projects where our rigs are boring today. Hover or tap a site to open it.</p>
+            </div>
+            <div class="acc" id="acc" role="list"><!-- built by script --></div>
+        </section>
+
+        <!-- ============ SECTION 3: COMPLETED ============ -->
+        <section class="sec completed" id="completed">
+            <div class="wrap sec-head">
+                <h2 class="h2 rv">Built, tested and handed over.</h2>
+                <p class="lead rv">Over a decade of foundations for the developers and contractors who shape Bengaluru. Hover or tap a client to see what we did for them.</p>
+            </div>
+            <div class="wrap explorer" id="explorer">
+                <div class="rail" id="rail" role="tablist" aria-label="Clients"><!-- logos built by script --></div>
+                <div class="stage" id="stage" aria-live="polite">
+                    <div class="stage-head">
+                        <h3 class="stage-name" id="st-name"></h3>
+                        <p class="stage-meta" id="st-meta"></p>
+                    </div>
+                    <div class="feature" id="feature">
+                        <img class="f-img a" alt="">
+                        <img class="f-img b" alt="">
+                        <div class="f-cap"><strong id="f-title"></strong><span id="f-sub"></span></div>
+                        <div class="f-dots" id="f-dots"></div>
+                        <button class="f-open" id="f-open" aria-label="Open photo gallery">View photos</button>
+                    </div>
+                    <ul class="rows" id="rows"></ul>
+                </div>
+            </div>
+            <noscript><p class="wrap">Please enable JavaScript to browse our completed projects by client.</p></noscript>
+        </section>
+
+        <!-- ============ LEADERSHIP ============ -->
+        <section class="sec leaders" id="leadership">
+            <div class="wrap">
+                <h2 class="h2 rv">The people behind the piles.</h2>
+                <div class="leader-grid">
+                    <article class="leader rv">
+                        <img src="images/team/founder.webp" alt="P.H. Krishna Reddy, Proprietor and Founder" loading="lazy">
+                        <div>
+                            <h3>P.H. Krishna Reddy</h3>
+                            <p class="role">Proprietor &amp; Founder</p>
+                            <p>With over 30 years in foundation and geotechnical construction, he established Hindustan Foundation &amp; Constructions in 1998.</p>
+                            <p>Under his leadership the company has delivered everything from residential buildings to large tech parks, defence infrastructure and complex pile works, including Terminals 1 and 2 at Bangalore International Airport.</p>
                         </div>
-                        <div class="leader-info">
-                            <h4>PH Krishna Reddy</h4>
-                            <div class="leader-title">Proprietor & Founder</div>
-                            <div class="leader-bio">
-                                <p>With over 30 years of experience in foundation and geotechnical construction, he
-                                    established Hindustan Foundations and Constructions in 1998.</p>
-                                <p>Under his leadership, the company has successfully executed projects ranging from
-                                    residential buildings to large-scale tech parks. His expertise further extends to
-                                    defence infrastructure and complex pile foundation works, notably contributing to
-                                    the development of Terminals 1 and 2 at Bangalore International Airport (BIAL).</p>
-                            </div>
+                    </article>
+                    <article class="leader rv">
+                        <img src="images/team/director.webp" alt="Vishruth Krishna Reddy, Director" loading="lazy">
+                        <div>
+                            <h3>Vishruth Krishna Reddy</h3>
+                            <p class="role">Director, Operations &amp; Project Management</p>
+                            <p>A Construction Management graduate of NYU with hands-on experience across India and the US.</p>
+                            <p>He leads project planning, execution and quality management, bringing global best practice to Indian construction sites.</p>
                         </div>
-                    </div>
-                    <!-- Vishruth Krishna Reddy -->
-                    <div class="leader-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="leader-img-container">
-                            <img src="images/people/img2.jpeg" alt="Vishruth Krishna Reddy"
-                                style="object-position: center;">
-                        </div>
-                        <div class="leader-info">
-                            <h4>Vishruth Krishna Reddy</h4>
-                            <div class="leader-title">Director – Operations & Project Management</div>
-                            <div class="leader-bio">
-                                <p>A Construction Management graduate from NYU, bringing valuable hands-on experience
-                                    across India and the US.</p>
-                                <p>Actively involved in project planning, execution, and quality management, focusing on
-                                    integrating global best practices into Indian construction environments.</p>
-                            </div>
-                        </div>
-                    </div>
+                    </article>
                 </div>
             </div>
-        </div>
-        <div class="custom-shape-divider-bottom-1681234567">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-                preserveAspectRatio="none">
-                <path
-                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                    class="shape-fill"></path>
-            </svg>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section projects-section">
-        <div class="container">
-            <div class="section-header center" data-aos="fade-up">
-                <h2 class="section-title">Our Projects</h2>
-                <div class="line"></div>
-
-            </div>
-        </div>
-
-        <!-- Completed Projects -->
-        <div class="container">
-            <h3 class="subsection-title" data-aos="fade-right">Completed Projects</h3>
-            <div class="projects-grid">
-                <!-- Prestige Song of The South -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200"
-                    data-images='["images/Projects/Completed Projects/Prestige Song of The South/Prestige-Song-of-the-South.jpg.webp", "images/Projects/Completed Projects/Prestige Song of The South/Prestige_Song_of_the_South.jpg", "images/Projects/Completed Projects/Prestige Song of The South/maxresdefault.jpg", "images/Projects/Completed Projects/Prestige Song of The South/prestige-song-of-the-south-phase1.jpg"]'>
-                    <img src="images/Projects/Completed Projects/Prestige Song of The South/Prestige-Song-of-the-South.jpg.webp"
-                        alt="Prestige Song of The South">
-                    <div class="project-info">
-                        <h4>Prestige Song of The South</h4>
+        <!-- ============ CONTACT ============ -->
+        <section class="sec contact" id="contact">
+            <div class="wrap contact-grid">
+                <div>
+                    <h2 class="h2 rv">Planning a foundation? Let&rsquo;s talk.</h2>
+                    <p class="lead rv">Tell us about the site and we will tell you what it takes to build on it.</p>
+                    <div class="contact-actions rv">
+                        <a class="btn btn-solid" href="tel:+919448086396">Call 94480 86396</a>
+                        <a class="btn btn-ghost" href="mailto:hindustan_foundation@yahoo.co.in?subject=Piling%20enquiry">Email us</a>
                     </div>
+                    <address class="rv">
+                        No. 446/21, 14th Cross Rd, Lakkasandra,<br>
+                        Lakkasandra Extension, Wilson Garden,<br>
+                        Bengaluru, Karnataka 560030<br><br>
+                        Mob: <a href="tel:+919448086396">9448086396</a><br>
+                        Tel: <a href="tel:+918022296396">080 2229 6396</a><br>
+                        <a href="mailto:hindustan_foundation@yahoo.co.in">hindustan_foundation@yahoo.co.in</a>
+                    </address>
                 </div>
-                <!-- Prestige Sunrise Park -->
-                <div class="project-card" data-aos="fade-up"
-                    data-images='["images/Projects/Completed Projects/Prestige Sunrise Park/a3caf971-3a02-465f-80a2-8ca3b35e0b90.webp", "images/Projects/Completed Projects/Prestige Sunrise Park/prestige-sunrise-park.webp", "images/Projects/Completed Projects/Prestige Sunrise Park/unnamed-3.jpg"]'>
-                    <img src="images/Projects/Completed Projects/Prestige Sunrise Park/a3caf971-3a02-465f-80a2-8ca3b35e0b90.webp"
-                        alt="Prestige Sunrise Park">
-                    <div class="project-info">
-                        <h4>Prestige Sunrise Park</h4>
-                    </div>
-                </div>
-                <!-- Vajram New Town - II -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100"
-                    data-images='["images/Projects/Completed Projects/Vajram New Town - II/Elevation-Main-Vajram-Newtown-2.0.jpg", "images/Projects/Completed Projects/Vajram New Town - II/1 (6).webp", "images/Projects/Completed Projects/Vajram New Town - II/1 (8).webp", "images/Projects/Completed Projects/Vajram New Town - II/7.jpg"]'>
-                    <img src="images/Projects/Completed Projects/Vajram New Town - II/Elevation-Main-Vajram-Newtown-2.0.jpg"
-                        alt="Vajram New Town - II">
-                    <div class="project-info">
-                        <h4>Vajram New Town - II</h4>
-                    </div>
-                </div>
-                <!-- Prestige Tech Forest -->
-                <div class="project-card" data-aos="fade-up"
-                    data-images='["images/Projects/Completed Projects/Prestige Tech Forest/Aerial-11.jpg", "images/Projects/Completed Projects/Prestige Tech Forest/Aerial-12.jpg", "images/Projects/Completed Projects/Prestige Tech Forest/DUSK-VIEW.jpg"]'>
-                    <img src="images/Projects/Completed Projects/Prestige Tech Forest/Aerial-11.jpg"
-                        alt="Prestige Tech Forest">
-                    <div class="project-info">
-                        <h4>Prestige Tech Forest</h4>
-
-                    </div>
-                </div>
-                <!-- Salarpuria Indus -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100"
-                    data-images='["images/Projects/Completed Projects/Salarpuria Indus Park/Spectrum_01_b.webp", "images/Projects/Completed Projects/Salarpuria Indus Park/Spectrum_01_b-2.webp"]'>
-                    <img src="images/Projects/Completed Projects/Salarpuria Indus Park/Spectrum_01_b.webp"
-                        alt="Salarpuria Indus Park">
-                    <div class="project-info">
-                        <h4>Salarpuria Indus Park</h4>
-
-                    </div>
-                </div>
-                <!-- Wipro SEZ -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200"
-                    data-images='["images/Projects/Completed Projects/WIPRO SEZ/WIPRO-KODATHI02.jpg.webp", "images/Projects/Completed Projects/WIPRO SEZ/Wipro-Kodathi-2.png", "images/Projects/Completed Projects/WIPRO SEZ/3a82b20363d5a188aca43f79c1255bf7.webp"]'>
-                    <img src="images/Projects/Completed Projects/WIPRO SEZ/WIPRO-KODATHI02.jpg.webp" alt="Wipro SEZ">
-                    <div class="project-info">
-                        <h4>WIPRO SEZ Kodathi</h4>
-
-                    </div>
-                </div>
-                <!-- Divyasree 77 degree LIFE -->
-                <div class="project-card" data-aos="fade-up"
-                    data-images='["images/Projects/Completed Projects/Divyasree 77 degree LIFE/Elevation-B-Divyasree-77-Life.jpeg.webp", "images/Projects/Completed Projects/Divyasree 77 degree LIFE/divyasree_77_life-kadubeesanahalli-bengaluru-divyasree_infrastructure_projects_private_limited.jpeg.avif"]'>
-                    <img src="images/Projects/Completed Projects/Divyasree 77 degree LIFE/Elevation-B-Divyasree-77-Life.jpeg.webp"
-                        alt="Divyasree 77 degree LIFE">
-                    <div class="project-info">
-                        <h4>Divyasree 77° LIFE</h4>
-                    </div>
-                </div>
-                <!-- Divyasree Techno Park -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100"
-                    data-images='["images/Projects/Completed Projects/Divyasree Techno Park/Divysree Republic of Whitefield - Block A1__633424326.jpg", "images/Projects/Completed Projects/Divyasree Techno Park/Technopark-L9o1nsXI.png", "images/Projects/Completed Projects/Divyasree Techno Park/Technoparks-BNCI6Xg3.jpg"]'>
-                    <img src="images/Projects/Completed Projects/Divyasree Techno Park/Divysree Republic of Whitefield - Block A1__633424326.jpg"
-                        alt="Divyasree Techno Park">
-                    <div class="project-info">
-                        <h4>Divyasree Techno Park</h4>
-                    </div>
-                </div>
-                <!-- Mana Verdant -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200"
-                    data-images='["images/Projects/Completed Projects/Mana Verdant/Elevation-Main-Mana-Verdant-Jakkur.jpg", "images/Projects/Completed Projects/Mana Verdant/perspective.jpg", "images/Projects/Completed Projects/Mana Verdant/viewpoint.jpg"]'>
-                    <img src="images/Projects/Completed Projects/Mana Verdant/Elevation-Main-Mana-Verdant-Jakkur.jpg"
-                        alt="Mana Verdant">
-                    <div class="project-info">
-                        <h4>Mana Verdant</h4>
-                    </div>
-                </div>
-                <!-- Prestige Century Landmark -->
-                <div class="project-card" data-aos="fade-up"
-                    data-images='["images/Projects/Completed Projects/Prestige Century Landmark/prestige-century-landmark.jpg", "images/Projects/Completed Projects/Prestige Century Landmark/5sgauf.webp"]'>
-                    <img src="images/Projects/Completed Projects/Prestige Century Landmark/prestige-century-landmark.jpg"
-                        alt="Prestige Century Landmark">
-                    <div class="project-info">
-                        <h4>Prestige Century Landmark</h4>
-                    </div>
-                </div>
-                <!-- Prestige Lake Shore Drive -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100"
-                    data-images='["images/Projects/Completed Projects/Prestige Lake Shore Drive/e8557e_205e67f3bb4546cdada293b7cb7015ea~mv2.jpg.avif", "images/Projects/Completed Projects/Prestige Lake Shore Drive/e8557e_2a43c2c061b1438f9b4be665e960557c~mv2.jpg.avif", "images/Projects/Completed Projects/Prestige Lake Shore Drive/e8557e_6d75d31d1e6b4935861086a273772c9e~mv2.jpg.avif"]'>
-                    <img src="images/Projects/Completed Projects/Prestige Lake Shore Drive/e8557e_205e67f3bb4546cdada293b7cb7015ea~mv2.jpg.avif"
-                        alt="Prestige Lake Shore Drive">
-                    <div class="project-info">
-                        <h4>Prestige Lake Shore Drive</h4>
-                    </div>
-                </div>
-                <!-- Casagrand -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200"
-                    data-images='["images/Projects/Completed Projects/Casagrand Florella/enterance.jpg.webp", "images/Projects/Completed Projects/Casagrand Florella/villa-4.jpg.webp", "images/Projects/Completed Projects/Casagrand Florella/CasaGrand-Florella-631069cdd522c.webp"]'>
-                    <img src="images/Projects/Completed Projects/Casagrand Florella/enterance.jpg.webp"
-                        alt="Casagrand Florella">
-                    <div class="project-info">
-                        <h4>Casagrand Florella</h4>
-
-                    </div>
-                </div>
-                <!-- Divyasree -->
-                <div class="project-card" data-aos="fade-up"
-                    data-images='["images/Projects/Completed Projects/Divyasree 77 Degree East/DivyaSree-77-Degree-East-9.jpg", "images/Projects/Completed Projects/Divyasree 77 Degree East/divya-sree-77-place-nagawara-bangalore-residential-buildings-8lwhogyseo.jpg.avif"]'>
-                    <img src="images/Projects/Completed Projects/Divyasree 77 Degree East/DivyaSree-77-Degree-East-9.jpg"
-                        alt="Divyasree 77 Degree">
-                    <div class="project-info">
-                        <h4>Divyasree 77° East</h4>
-
-                    </div>
-                </div>
-                <!-- Goyal -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100"
-                    data-images='["images/Projects/Completed Projects/Goyal Orchid Bloomsberry/goyal_orchid_bloomsberry-varthur_bangalore-bengaluru-goyal_&_co___hariyana_group.jpeg.avif", "images/Projects/Completed Projects/Goyal Orchid Bloomsberry/JLL_Bengaluru_Orchid Bloomsberry_9214_EXT_4.jpg", "images/Projects/Completed Projects/Goyal Orchid Bloomsberry/Artboard-2-2-1.jpg"]'>
-                    <img src="images/Projects/Completed Projects/Goyal Orchid Bloomsberry/goyal_orchid_bloomsberry-varthur_bangalore-bengaluru-goyal_&_co___hariyana_group.jpeg.avif"
-                        alt="Goyal Orchid">
-                    <div class="project-info">
-                        <h4>Goyal Orchid Bloomsberry</h4>
-
-                    </div>
+                <div class="map rv">
+                    <iframe title="Map to Hindustan Foundation & Constructions" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.435452703593!2d77.5988828!3d12.9439642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15b65b0236ff%3A0xce42bc1e826ea905!2sHindustan%20Foundation%20%26%20Constructions!5e0!3m2!1sen!2sin!4v1767457967648!5m2!1sen!2sin" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
-        </div>
+        </section>
+    </main>
 
-        <!-- Ongoing Projects -->
-        <div class="container">
-            <h3 class="subsection-title mt-5" data-aos="fade-right">Ongoing Projects</h3>
-            <div class="projects-grid">
-                <!-- Mantri -->
-                <div class="project-card" data-aos="fade-up"
-                    data-images='["images/Projects/Ongoing Projects/Mantri Blossom/blossom_banner_e8f85b01c5.webp", "images/Projects/Ongoing Projects/Mantri Blossom/f28e63deb802d1c772b9af41d91548b0.jpg"]'>
-                    <img src="images/Projects/Ongoing Projects/Mantri Blossom/blossom_banner_e8f85b01c5.webp"
-                        alt="Mantri Blossom">
-                    <div class="project-info">
-                        <h4>Mantri Blossom</h4>
-
-                    </div>
-                </div>
-                <!-- Prestige King County -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100"
-                    data-images='["images/Projects/Ongoing Projects/Prestige King County/08a7e68f-3487-4927-96e9-734b3dc55b99.webp", "images/Projects/Ongoing Projects/Prestige King County/images-3.jpeg"]'>
-                    <img src="images/Projects/Ongoing Projects/Prestige King County/08a7e68f-3487-4927-96e9-734b3dc55b99.webp"
-                        alt="Prestige King County">
-                    <div class="project-info">
-                        <h4>Prestige King County</h4>
-
-                    </div>
-                </div>
-                <!-- Prestige Park Grove -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200"
-                    data-images='["images/Projects/Ongoing Projects/Prestige Park Grove/f4e97e7f-0f8f-42b0-b23b-316c53a2d771.webp", "images/Projects/Ongoing Projects/Prestige Park Grove/f0ddfa72-0e93-45d8-a0c3-dcb77a2d91f5.jpeg", "images/Projects/Ongoing Projects/Prestige Park Grove/unnamed-2.jpg"]'>
-                    <img src="images/Projects/Ongoing Projects/Prestige Park Grove/f4e97e7f-0f8f-42b0-b23b-316c53a2d771.webp"
-                        alt="Prestige Park Grove">
-                    <div class="project-info">
-                        <h4>Prestige Park Grove</h4>
-
-                    </div>
-                </div>
-                <!-- Sattva Aeropolis -->
-                <div class="project-card" data-aos="fade-up"
-                    data-images='["images/Projects/Ongoing Projects/Sattva Aeropolis/Aeropolis-banner-1.jpg", "images/Projects/Ongoing Projects/Sattva Aeropolis/JLL_Bengaluru_Salarpuria Sattva Aeropolis_8574_EXT_1.png", "images/Projects/Ongoing Projects/Sattva Aeropolis/638425974PB-1.png"]'>
-                    <img src="images/Projects/Ongoing Projects/Sattva Aeropolis/Aeropolis-banner-1.jpg"
-                        alt="Sattva Aeropolis">
-                    <div class="project-info">
-                        <h4>Sattva Aeropolis</h4>
-
-                    </div>
-                </div>
-                <!-- Prestige Raintree Park -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100"
-                    data-images='["images/Projects/Ongoing Projects/Prestige Raintree Park/52753493-1366-4784-b51f-255b249029c9.webp", "images/Projects/Ongoing Projects/Prestige Raintree Park/Screenshot 2025-09-08 at 2.37.39 PM.png", "images/Projects/Ongoing Projects/Prestige Raintree Park/Screenshot 2025-09-08 at 2.37.42 PM.png", "images/Projects/Ongoing Projects/Prestige Raintree Park/Screenshot 2025-09-08 at 2.38.07 PM.png", "images/Projects/Ongoing Projects/Prestige Raintree Park/Screenshot 2025-09-08 at 2.38.11 PM.png", "images/Projects/Ongoing Projects/Prestige Raintree Park/f0ddfa72-0e93-45d8-a0c3-dcb77a2d91f5.jpeg", "images/Projects/Ongoing Projects/Prestige Raintree Park/f4e97e7f-0f8f-42b0-b23b-316c53a2d771.webp"]'>
-                    <img src="images/Projects/Ongoing Projects/Prestige Raintree Park/52753493-1366-4784-b51f-255b249029c9.webp"
-                        alt="Prestige Raintree Park">
-                    <div class="project-info">
-                        <h4>Prestige Raintree Park</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us -->
-    <section id="why-us" class="section why-us">
-        <div class="container">
-            <div class="section-header center" data-aos="fade-up">
-                <h2 class="section-title">Why Choose Us</h2>
-                <div class="line"></div>
-            </div>
-            <div class="features-grid">
-                <div class="feature-item" data-aos="glow">
-                    <i class="fas fa-hard-hat"></i>
-                    <h3>Expert Engineering</h3>
-                    <p>Certified structural engineers overseeing every project.</p>
-                </div>
-                <div class="feature-item" data-aos="glow" data-aos-delay="100">
-                    <i class="fas fa-clock"></i>
-                    <h3>Timely Delivery</h3>
-                    <p>We value time as much as quality. Deadlines are sacred.</p>
-                </div>
-                <div class="feature-item" data-aos="glow" data-aos-delay="200">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Safety First</h3>
-                    <p>Zero-compromise policy on site safety and stability.</p>
-                </div>
-                <div class="feature-item" data-aos="glow" data-aos-delay="300">
-                    <i class="fas fa-check-circle"></i>
-                    <h3>Quality Materials</h3>
-                    <p>Using only the highest grade concrete and steel.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Clients Section -->
-    <section id="clients" class="section clients">
-        <div class="container">
-            <div class="section-header center" data-aos="fade-up">
-                <h2 class="section-title">Trusted By</h2>
-                <div class="line"></div>
-            </div>
-            <div class="marquee">
-                <div class="marquee-content">
-                    <!-- Client Logos -->
-                    <img src="images/Clients/CASAGRAND.jpg" alt="Casagrand">
-                    <img src="images/Clients/DivyaSree.png" alt="DivyaSree">
-                    <img src="images/Clients/Larsen & Toubro.png" alt="L&T">
-                    <img src="images/Clients/NSL.png" alt="NSL">
-                    <img src="images/Clients/Prestige.png" alt="Prestige">
-                    <img src="images/Clients/Puravankara.svg" alt="Puravankara">
-                    <img src="images/Clients/Shapoorji Pallonji.png" alt="Shapoorji">
-                    <img src="images/Clients/mantri-developers.jpg" alt="Mantri">
-                    <img src="images/Clients/vajram-2025.png" alt="Vajram">
-                    <img src="images/Clients/bbmp.jpg" alt="BBMP">
-                    <!-- Duplicates for seamless loop -->
-                    <img src="images/Clients/CASAGRAND.jpg" aria-hidden="true">
-                    <img src="images/Clients/DivyaSree.png" aria-hidden="true">
-                    <img src="images/Clients/Larsen & Toubro.png" aria-hidden="true">
-                    <img src="images/Clients/NSL.png" aria-hidden="true">
-                    <img src="images/Clients/Prestige.png" aria-hidden="true">
-                    <img src="images/Clients/Puravankara.svg" aria-hidden="true">
-                    <img src="images/Clients/Shapoorji Pallonji.png" aria-hidden="true">
-                    <img src="images/Clients/mantri-developers.jpg" aria-hidden="true">
-                    <img src="images/Clients/vajram-2025.png" aria-hidden="true">
-                    <img src="images/Clients/bbmp.jpg" aria-hidden="true">
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- Request a Quote Section -->
-    <section class="cta-section" data-aos="fade-up">
-        <div class="cta-content">
-            <h2>Ready to Build Your Vision?</h2>
-            <p>From complex foundations to complete structural engineering, we bring expertise to every project. Contact
-                us today for a consultation and customized quote.</p>
-            <a href="mailto:hindustan_foundation@yahoo.co.in" class="btn btn-primary">Request a Quote</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container footer-content">
-            <div class="footer-info" data-aos="fade-right">
-                <h3>Hindustan Foundation and Constructions</h3>
-                <p>Build on solidity. Build with us.</p>
-                <br>
-                <div class="contact-item"><i class="fas fa-map-marker-alt"></i> <span>Krishnappa Building, 39/3, 2nd
-                        Cross Rd, Lakkasandra, Bangalore</span></div>
-                <div class="contact-item"><i class="fas fa-phone"></i> <a href="tel:+919448086396"><span>+91
-                            9448086396</span></a></div>
-                <div class="contact-item"><i class="fas fa-envelope"></i> <a
-                        href="mailto:hindustan_foundation@yahoo.co.in"><span>hindustan_foundation@yahoo.co.in</span></a>
-                </div>
-            </div>
-            <div class="footer-links" data-aos="fade-left">
-                <h4>Quick Links</h4>
-                <a href="#hero">Home</a>
-                <a href="#about">About Us</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="footer-map" data-aos="fade-left">
-                <h4>Find Us</h4>
-                <div class="footer-map-container">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.435452703593!2d77.5988828!3d12.9439642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15b65b0236ff%3A0xce42bc1e826ea905!2sHindustan%20Foundation%20%26%20Constructions!5e0!3m2!1sen!2sin!4v1767457967648!5m2!1sen!2sin"
-                        width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Hindustan Foundations and Construction. All Rights Reserved.</p>
+    <footer class="foot">
+        <div class="foot-word" aria-hidden="true">Hindustan Foundation</div>
+        <div class="wrap foot-bar">
+            <p>&copy; 2025 Hindustan Foundation &amp; Constructions. All rights reserved.</p>
+            <p>Specialists in pile foundation, Bengaluru.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <!-- Lightbox -->
+    <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Project photos" hidden>
+        <button class="lb-x" id="lb-x" aria-label="Close">&times;</button>
+        <button class="lb-nav prev" id="lb-prev" aria-label="Previous photo">&lsaquo;</button>
+        <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+        <button class="lb-nav next" id="lb-next" aria-label="Next photo">&rsaquo;</button>
+    </div>
+
+    <script src="js/data.js"></script>
     <script src="js/script.js"></script>
 </body>
 
